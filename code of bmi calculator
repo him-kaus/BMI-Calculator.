@@ -1,0 +1,197 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>BMI Calculater</title>
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<body>
+
+<!-- Here The Coding Of CSS. For Styling .-->
+
+	<style type="text/css">
+		body{
+            background-image: url('doc7.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+		}
+		.container{
+			position: fixed;top: 26%;left: 30%;
+			height: 1730px;
+			width: 2000px;
+			background-color: #ae42c4;
+			border-radius: 2em;
+			box-shadow: 0em 0em 0em #ae42c4, -1em -1em 3em  #ae42c4;
+            overflow: hidden;
+		}
+		#weight{
+			background-color: white;
+			height: 150px;
+			width: 1870px;
+			border-radius: 1em;
+			margin: 3px 20px 6px 40px;
+            font-size: 65px;
+            font-family: 'Tangerine', serif;
+
+		}
+		#height{
+			background-color: white;
+			height: 150px;
+			width: 1870px;
+			border-radius: 1em;
+            overflow: hidden;
+			margin: 3px 20px 6px 40px;
+            font-size: 65px;
+            font-family: 'Tangerine', serif;
+            
+		}
+		#calculate{
+            background-color: #cec4c7;
+			
+			height: 165px;
+			width: 400px;
+			border-radius: 1em;
+			margin: 50px 777px;
+            text-align: center;
+            
+
+		}
+		#title{
+            text-align: center;
+            background-color: #44ef3b;
+            height: 150px;
+            padding-top: 1em;
+            border-radius: 0em;
+            overflow: hidden;
+            font-size: 70px;
+		}
+		#text1{
+            color: white;
+            padding-top: -25px;
+            padding-bottom: 10px;
+            margin: 0px;
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 100px;
+
+		}
+        h3{
+            font-size: 60px;
+        }
+        #footer{
+            background-color: #d19027;
+            height: 150px;
+            width: 1900px;
+            font-size: 50px;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+           /* font-family: Arial, Helvetica, sans-serif;*/
+            text-align: center;
+            padding-top: 40px;
+            border-radius: 0.5em;
+            margin-left: 40px;
+            color: white;
+            box-shadow: 2px 2px 2px #4d2a56, -2px -2px 4px #4d2a56;
+
+        }
+        #clear{
+            background-color: #cec4c7;
+            height: 134px;
+            width: 310px;
+            border-radius: 5em;
+            text-align: center;
+            vertical-align: middle;
+            margin: 20px 815px;
+
+        }
+        h1{
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 50px;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration-style: bold;
+           
+
+        }
+	</style>
+
+<!-- Here The Coding Of HTML -->
+
+    <div class="container">
+    	<div id="title"><h2 id="text1" class="animate__animated animate__backInLeft">BMI CALCULATOR</h2></div>
+    	<h3 style="font-family: Arial, Helvetica, sans-serif;">Enter Weight : </h3><input type="text" name="weight" id="weight" placeholder="Enter Weight In kg."><br><br><br>
+    	<h3 style="font-family: Arial, Helvetica, sans-serif;">Enter Height : </h3><input type="text" name="height" id="height" placeholder="Enter Height In Feet(ft)."><br><br>
+    	<button id="calculate"><h3 style="font-family: Arial, Helvetica, sans-serif;" onclick="BMI()">Calculate</h3></button><br>
+        
+        <p id="footer" type="value"></p>
+        <button id="clear" onclick="location.reload();" ><h1>Clear</h1></button>
+    </div>
+
+<!-- Here The Coding Of JavaScript. -->
+
+    <script type="text/javascript">
+    	/*let BMI = () => {
+    		let weight;
+    		let height;
+    		let bmi = weight/height*height;
+            
+            document.getElementById('weight').innerHTML = weight;
+            document.getElementById('height').innerHTML = height;
+            //bmi = weight/height*height;
+            alert(bmi);
+
+    	}
+    	//BMI();*/
+       /* function clear(){
+            //var x = document.getElementById('');
+            window.location.reload();
+        }*/
+    	function BMI() {
+    		var weight = document.getElementById('weight').value;
+    		var height = document.getElementById('height').value;
+            var showvalue;
+
+            height = height * 0.3048;
+    		var bmi = weight/(height*height);
+    		//bmi = weight/(height*height);
+            //alert(bmi);
+    	if(weight=="" || height==""){
+           // alert("Please Enter Correct Entities. Thank You.");
+            //showvalue = "Please Enter Correct Entities. Thank You.";
+            document.getElementById('footer').innerHTML = "Please Enter Correct Entities. Thank You.";
+            //setInterval(footer,2000);
+        }
+        /*else if(weight==<char>){
+            alert("Please Enter Correct Entities. Thank You.");
+        }*/
+        else if (bmi<16) {
+            document.getElementById('footer').innerHTML ="Your BMI Is = "+bmi+" kg/m^2. You Are Underweight(SEVERE THINNESS)....You Have To Eat Some Grass. Thank You.";
+        }
+    	else if (bmi>=16 && bmi<17) {
+    		document.getElementById('footer').innerHTML ="Your BMI Is = "+bmi+" kg/m^2. You Are Underweight(MODERATE THINNESS)....You Have To Eat Some Grass. Thank You";
+    	}
+        else if (bmi>=17 && bmi<18.5) {
+            document.getElementById('footer').innerHTML ="Your BMI Is = "+bmi+" kg/m^2. You Are Underweight(MILD THINNESS)....You Have To Eat Some Grass. Thank You";
+        }
+    	else if(bmi>=18.5 && bmi<=25){
+            document.getElementById('footer').innerHTML ="Your BMI Is = "+bmi+" kg/m^2. Wow You Are Fit....Thank You So Much.";
+    	}
+    	else{
+    		document.getElementById('footer').innerHTML ="Your BMI Is = "+bmi+" kg/m^2. You Are Overweight....This Is A Time For A Run.";
+    	}
+        
+       // function gotit(){
+           /* document.getElementById("got").addEventListener("click",function(){;
+            var x = document.getElementById('footer').;
+            if(x.style.display === "none"){
+                x.style.display = "block";
+            }else{
+                x.style.display = "none";
+            }
+        });*/
+    }
+    //setTimeout(BMI,1000);
+    	//BMI();
+    </script>
+</body>
+</html>
